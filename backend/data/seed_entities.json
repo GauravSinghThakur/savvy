@@ -1,0 +1,72 @@
+[
+  {
+    "legal_name": "Acme Corp",
+    "address_line1": "123 Main St",
+    "city": "Springfield",
+    "country": "US",
+    "registration_status": "Active"
+  },
+  {
+    "legal_name": "Globex LLC",
+    "address_line1": "1 Long Acre",
+    "city": "London",
+    "country": "GB",
+    "registration_status": "Inactive"
+  },
+  {
+    "legal_name": "Blue Ocean Ltd",
+    "address_line1": "42 Harbor Rd",
+    "city": "Vancouver",
+    "country": "CA",
+    "registration_status": "Active"
+  },
+  {
+    "legal_name": "Sunrise GmbH",
+    "address_line1": "12 Hauptstrasse",
+    "city": "Berlin",
+    "country": "DE",
+    "registration_status": "Active"
+  },
+  {
+    "legal_name": "La Belle SA",
+    "address_line1": "5 Rue de Rivoli",
+    "city": "Paris",
+    "country": "FR",
+    "registration_status": "Inactive"
+  },
+  {
+    "legal_name": "Southern Cross Pty Ltd",
+    "address_line1": "8 George St",
+    "city": "Sydney",
+    "country": "AU",
+    "registration_status": "Active"
+  },
+  {
+    "legal_name": "Sakura Co.",
+    "address_line1": "3 Chuo-dori",
+    "city": "Tokyo",
+    "country": "JP",
+    "registration_status": "Active"
+  },
+  {
+    "legal_name": "TerraTech SA",
+    "address_line1": "90 Paulista Ave",
+    "city": "Sao Paulo",
+    "country": "BR",
+    "registration_status": "Unknown"
+  },
+  {
+    "legal_name": "Bharat Traders Pvt Ltd",
+    "address_line1": "21 MG Road",
+    "city": "Mumbai",
+    "country": "IN",
+    "registration_status": "Active"
+  },
+  {
+    "legal_name": "Lowlands BV",
+    "address_line1": "14 Damrak",
+    "city": "Amsterdam",
+    "country": "NL",
+    "registration_status": "Active"
+  }
+]

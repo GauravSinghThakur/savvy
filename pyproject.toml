@@ -1,0 +1,10 @@
+# Central tool configuration for Python tooling.
+# This file configures Black (formatting) and can be extended for pytest, etc.
+
+[tool.black]
+# Keep line length consistent across tools and editors.
+line-length = 88
+target-version = ["py311"]
+include = "\.(py|pyi)$"
+exclude = "^$"
+

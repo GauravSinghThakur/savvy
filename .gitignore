@@ -1,0 +1,23 @@
+# Repository-wide ignore rules
+# Explains why common generated and local-only files are excluded from version control.
+
+# Python bytecode and caches
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# Node build artifacts and dependencies
+node_modules/
+dist/
+web/node_modules/
+web/dist/
+
+# Local environment variables (never commit secrets)
+.env
+.env.*
+
+# Editor and OS metadata
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,18 @@
+# Ruff linter configuration
+# Enforces code quality and basic style rules alongside Black.
+
+line-length = 88
+target-version = "py311"
+
+[lint]
+# Core rule sets: pyflakes (F), pycodestyle (E,W), isort (I), bugbear (B)
+select = ["F", "E", "W", "I", "B"]
+ignore = [
+    # Add rule codes to ignore here with a justification when needed.
+]
+
+[format]
+# Keep in sync with Black; Ruff can also format.
+quote-style = "double"
+indent-style = "space"
+
