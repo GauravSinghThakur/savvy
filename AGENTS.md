@@ -12,6 +12,7 @@
 - Backend: `uvicorn backend.app.main:app --reload` (run API), `pytest -q` (tests), `ruff . && black .` (lint/format).
  - Makefile: `make help` lists common tasks; try `make setup-backend`, `make run-backend`, `make test-backend`, `make web-dev`.
  - Bootstrap: `scripts/dev/bootstrap.ps1` (PowerShell) sets up venv and installs web deps.
+ - Quickstart: See `README.md` for front-end and back-end run instructions.
 - Web (expected): `npm install && npm start` (dev server), `npm test -- --watch=false` (unit tests).
 - Infra (if used): `terraform init && terraform apply` or `make deploy`.
 
