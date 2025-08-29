@@ -18,7 +18,9 @@ export default function App() {
   const [error, setError] = useState(null);
   const [q, setQ] = useState("");
   const [country, setCountry] = useState("");
-  const [results, setResults] = useState([]);
+ const [results, setResults] = useState([]);
+  const [verifying, setVerifying] = useState(false);
+  const [verifyResult, setVerifyResult] = useState(null);
 
   async function checkHealth() {
     setError(null);
@@ -46,8 +48,32 @@ export default function App() {
       }
       const json = await res.json();
       setResults(json);
+      setVerifyResult(null); // clear any previous verification output
     } catch (e) {
       setError(String(e));
+    }
+  }
+
+  async function verifyCandidate(name, countryCode) {
+    // POST to /v1/verify with selected candidate name and country
+    setError(null);
+    setVerifying(true);
+    setVerifyResult(null);
+    try {
+      const res = await fetch(`${API_BASE}/v1/verify`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, country: countryCode })
+      });
+      if (!res.ok) {
+        throw new Error(`Verify failed (${res.status})`);
+      }
+      const json = await res.json();
+      setVerifyResult(json);
+    } catch (e) {
+      setError(String(e));
+    } finally {
+      setVerifying(false);
     }
   }
 
@@ -100,14 +126,43 @@ export default function App() {
         {/* Results list */}
         <ul>
           {results.map((c) => (
-            <li key={`${c.legal_name}-${c.address.country}`}>
+            <li key={`${c.legal_name}-${c.address.country}`} style={{ marginBottom: 8 }}>
               <strong>{c.legal_name}</strong> — {c.registration_status}
               <div style={{ color: "#555" }}>
                 {c.address.line1}, {c.address.city}, {c.address.country}
               </div>
+              <button
+                style={{ marginTop: 6 }}
+                onClick={() => verifyCandidate(c.legal_name, c.address.country)}
+                disabled={verifying}
+              >
+                {verifying ? "Verifying..." : "Verify"}
+              </button>
             </li>
           ))}
         </ul>
+
+        {/* Verification result panel */}
+        {verifyResult && (
+          <section style={{ marginTop: 16 }}>
+            <h3>Verification Result</h3>
+            <div>
+              <strong>{verifyResult.legal_name}</strong> — {verifyResult.registration_status}
+            </div>
+            <div style={{ color: "#555" }}>
+              {verifyResult.address.line1}, {verifyResult.address.city}, {verifyResult.address.country}
+            </div>
+            <div style={{ marginTop: 6 }}>
+              Status: <strong>{verifyResult.status}</strong>
+            </div>
+            {Array.isArray(verifyResult.risk_flags) && verifyResult.risk_flags.length > 0 && (
+              <div style={{ marginTop: 6 }}>
+                Risk Flags: {verifyResult.risk_flags.join(", ")}
+              </div>
+            )}
+            <button style={{ marginTop: 8 }} onClick={() => setVerifyResult(null)}>Clear</button>
+          </section>
+        )}
       </section>
     </main>
   );
