@@ -18,7 +18,7 @@ import { apiBaseUrl as API_BASE, getHealth, searchCandidates, verifyEntity } fro
 
 // Read the backend base URL from Vite environment variables
 // Example: VITE_API_BASE_URL=http://localhost:8000
-const API_BASE = import.meta?.env?.VITE_API_BASE_URL || "http://localhost:8000";
+// Note: API_BASE is imported from utils/api.js
 
 export default function App() {
   const [status, setStatus] = useState("unknown");
